@@ -24,8 +24,8 @@
         -   Implemented using a secondary HTML5 Canvas (`#canvas-cursor`) to ensure it doesn't interfere with the background network animation.
         -   Particles are generated on mouse movement and fade out over time.
 
-4.  **Hide BG**
-    background-image: url('threeFusionBG.png');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+4.  **Background Enhancement**:
+    -   **Dynamic Slideshow**: Replaced the static background with an automatic image slideshow.
+        -   Utilizes a dedicated `#bg-slideshow` container.
+        -   Configured to cycle through images from the `BG` folder (`threeFusionBG.png`, `threeFusionBG_quarry.png`, `threeFusionBG_quarry_GEVF.png`) every 5 seconds.
+        -   Implemented smooth cross-fade transitions.

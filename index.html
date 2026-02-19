@@ -21,6 +21,20 @@
             position: relative;
         }
 
+        #bg-slideshow {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -5; /* 最底层 */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            transition: background-image 1.5s ease-in-out;
+            opacity: 0.01; /* 暂时隐藏背景slideshow */
+        }
+
         /* 背景画布 */
         #canvas-bg {
             position: absolute;
@@ -211,6 +225,7 @@
     </style>
 </head>
 <body>
+    <div id="bg-slideshow"></div>
     <nav>
         <ul>
             <li><a href="aims.html">our aims</a></li>
@@ -235,6 +250,31 @@
     </div>
 
     <script>
+        // --- 0. 背景图片轮播 ---
+        const bgElement = document.getElementById('bg-slideshow');
+        const images = [
+            'BG/threeFusionBG.png',
+            'BG/threeFusionBG_quarry.png',
+            'BG/threeFusionBG_quarry_GEVF.png'
+        ];
+        let currentImageIndex = 0;
+
+        // 预加载图片
+        images.forEach(src => {
+            const img = new Image();
+            img.src = src;
+        });
+
+        function changeBackground() {
+            bgElement.style.backgroundImage = `url('${images[currentImageIndex]}')`;
+            currentImageIndex = (currentImageIndex + 1) % images.length;
+        }
+
+        // 初始设置
+        changeBackground();
+        // 每 5 秒切换一次
+        setInterval(changeBackground, 5000);
+
         // --- 1. 打字机效果脚本 ---
         const textElement = document.getElementById('text');
         const textToType = "Where data meets visual intelligence for geoscience.";
