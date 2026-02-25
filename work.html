@@ -15,11 +15,23 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        #bg-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
         }
 
         .container {
-            max-width: 800px;
-            margin: 100px auto 50px;
+            max-width: 1200px;
+            width: 90%;
+            margin: 50px auto;
             padding: 40px;
             background: rgba(255, 255, 255, 0.05);
             backdrop-filter: blur(10px);
@@ -30,33 +42,96 @@
 
         h1 {
             font-size: 3rem;
-            margin-bottom: 2rem;
+            margin-bottom: 3rem;
+            text-align: center;
             background: linear-gradient(135deg, #00C9FF 0%, #92FE9D 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
-        p {
-            line-height: 1.8;
-            color: #ccc;
-            font-size: 1.1rem;
-            margin-bottom: 1.5rem;
+        .work-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            width: 100%;
         }
 
-        .back-btn {
-            display: inline-block;
-            margin-top: 2rem;
-            padding: 10px 25px;
-            border: 1px solid rgba(0, 201, 255, 0.5);
-            color: #00C9FF;
+        .work-btn {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            padding: 40px;
+            min-height: 120px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            color: #fff;
             text-decoration: none;
-            border-radius: 5px;
-            transition: all 0.3s ease;
+            text-align: left;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
         }
 
-        .back-btn:hover {
-            background: rgba(0, 201, 255, 0.1);
-            box-shadow: 0 0 15px rgba(0, 201, 255, 0.3);
+        .work-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: linear-gradient(to bottom, #00C9FF, #92FE9D);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .work-btn:hover {
+            background: rgba(255, 255, 255, 0.08);
+            transform: translateX(10px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .work-btn:hover::before {
+            opacity: 1;
+        }
+
+        .work-content {
+            flex: 1;
+            padding-right: 20px;
+        }
+
+        .work-title {
+            display: block;
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #e0e0e0;
+            margin-bottom: 10px;
+            transition: color 0.3s ease;
+        }
+
+        .work-btn:hover .work-title {
+            color: #00C9FF;
+        }
+
+        .work-desc {
+            display: block;
+            color: #a0a0a0;
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        .work-icon {
+            font-size: 2.5rem;
+            opacity: 0.5;
+            transition: all 0.3s ease;
+            margin-left: 20px;
+        }
+
+        .work-btn:hover .work-icon {
+            opacity: 1;
+            transform: scale(1.1);
+            color: #00C9FF;
         }
 
         @keyframes fadeIn {
@@ -66,11 +141,153 @@
     </style>
 </head>
 <body>
+    <canvas id="bg-canvas"></canvas>
     <div class="container">
         <h1>Our Work</h1>
-        <p>This is the detail page for "Our Work".</p>
-        <p>Showcase your projects, case studies, and the solutions you have provided.</p>
-        <a href="index.html" class="back-btn">← Back to Home</a>
+        
+        <div class="work-grid">
+            <a href="gevf-engine.html" class="work-btn">
+                <div class="work-content">
+                    <span class="work-title">Data-driven solution via GEVF Engine</span>
+                    <span class="work-desc">Advanced data processing using our proprietary GEVF engine architecture.</span>
+                </div>
+                <div class="work-icon">🚀</div>
+            </a>
+
+            <a href="surrogate-model.html" class="work-btn">
+                <div class="work-content">
+                    <span class="work-title">Surrogate Model</span>
+                    <span class="work-desc">Efficient computational models for complex system simulation.</span>
+                </div>
+                <div class="work-icon">🔄</div>
+            </a>
+
+            <a href="auto-digital-twin.html" class="work-btn">
+                <div class="work-content">
+                    <span class="work-title">Auto-Digital Twin for Mining</span>
+                    <span class="work-desc">Automated creation of digital twins for mining operations.</span>
+                </div>
+                <div class="work-icon">⛏️</div>
+            </a>
+
+            <a href="three-fusion.html" class="work-btn">
+                <div class="work-content">
+                    <span class="work-title">Three-Fusion Framework</span>
+                    <span class="work-desc">Integrated framework combining multiple data sources for robust analysis.</span>
+                </div>
+                <div class="work-icon">🔗</div>
+            </a>
+
+            <a href="photogrammetry.html" class="work-btn">
+                <div class="work-content">
+                    <span class="work-title">Photogrammetry in Mining</span>
+                    <span class="work-desc">High-precision 3D modeling from photographic data.</span>
+                </div>
+                <div class="work-icon">📷</div>
+            </a>
+
+            <a href="point-cloud.html" class="work-btn">
+                <div class="work-content">
+                    <span class="work-title">Point Cloud Data Driven Digital Twin</span>
+                    <span class="work-desc">Digital twin generation powered by dense point cloud data.</span>
+                </div>
+                <div class="work-icon">☁️</div>
+            </a>
+
+            <a href="monitoring-vis.html" class="work-btn">
+                <div class="work-content">
+                    <span class="work-title">Real-time Monitoring and Visualisation</span>
+                    <span class="work-desc">Interactive dashboards for real-time operational oversight.</span>
+                </div>
+                <div class="work-icon">📊</div>
+            </a>
+
+            <a href="computer-vision.html" class="work-btn">
+                <div class="work-content">
+                    <span class="work-title">Computer Vision Driven Solution</span>
+                    <span class="work-desc">AI-powered visual analysis for safety and efficiency.</span>
+                </div>
+                <div class="work-icon">👁️</div>
+            </a>
+        </div>
+
+        <div style="text-align: center;">
+            <a href="index.html" class="back-btn">← Back to Home</a>
+        </div>
     </div>
+
+    <script>
+        const canvas = document.getElementById('bg-canvas');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+
+        function resize() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            initParticles();
+        }
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.vx = (Math.random() - 0.5) * 0.5;
+                this.vy = (Math.random() - 0.5) * 0.5;
+                this.size = Math.random() * 2 + 1;
+            }
+
+            update() {
+                this.x += this.vx;
+                this.y += this.vy;
+
+                if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
+                if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
+            }
+
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fillStyle = 'rgba(0, 201, 255, 0.5)';
+                ctx.fill();
+            }
+        }
+
+        function initParticles() {
+            particles = [];
+            const numberOfParticles = (canvas.width * canvas.height) / 15000;
+            for (let i = 0; i < numberOfParticles; i++) {
+                particles.push(new Particle());
+            }
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            for (let i = 0; i < particles.length; i++) {
+                particles[i].update();
+                particles[i].draw();
+
+                for (let j = i; j < particles.length; j++) {
+                    const dx = particles[i].x - particles[j].x;
+                    const dy = particles[i].y - particles[j].y;
+                    const distance = Math.sqrt(dx * dx + dy * dy);
+
+                    if (distance < 100) {
+                        ctx.beginPath();
+                        ctx.strokeStyle = `rgba(0, 201, 255, ${0.1 - distance/1000})`;
+                        ctx.lineWidth = 0.5;
+                        ctx.moveTo(particles[i].x, particles[i].y);
+                        ctx.lineTo(particles[j].x, particles[j].y);
+                        ctx.stroke();
+                    }
+                }
+            }
+            requestAnimationFrame(animate);
+        }
+
+        window.addEventListener('resize', resize);
+        resize();
+        animate();
+    </script>
 </body>
 </html>

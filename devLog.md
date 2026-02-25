@@ -29,3 +29,11 @@
         -   Utilizes a dedicated `#bg-slideshow` container.
         -   Configured to cycle through images from the `BG` folder (`threeFusionBG.png`, `threeFusionBG_quarry.png`, `threeFusionBG_quarry_GEVF.png`) every 5 seconds.
         -   Implemented smooth cross-fade transitions.
+
+
+5.  **data-driven visualisation solution** and **Auto-Digital Twin for Mining**
+    - STAGE 1: CAD and Parameter-based mining method digital twin construction
+      - GEVF Engine-driven virtual modelling for real-time visualisation and surrogate model training/Visualisation/knowledge-exchange
+    - STAGE 2: Photogrammetry data pop-in and mutlimodal fusion capability
+    - STAGE 3: Point cloud data pop-in and Three-Fusion Framework
+    - STAGE 4: Knowledge Exchange via GEVF Engine
